@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Map">
+      <UniqueIdentifier>{4ec90190-bed6-448e-93cd-ed818bf50ec1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Levels">
+      <UniqueIdentifier>{d8000590-31ff-4554-a01b-d3d5874da688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States">
+      <UniqueIdentifier>{92d8dc74-f0c3-4833-b9b7-13d4083743ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{22f8e2aa-ba49-4435-9961-913d9eb9b4b6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="layer.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="object.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="map.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="sprite.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="spawnpoint.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\jsoncpp-master\dist\jsoncpp.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="machine.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="gameState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="levelOne.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gameObject.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="physics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="spawnpoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\jsoncpp-master\dist\json\json-forwards.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\jsoncpp-master\dist\json\json.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="machine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gameState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="levelOne.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="animation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="physics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Data\Backgrounds\Cave3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Backgrounds\Hud.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Backgrounds\Jungle10.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Backgrounds\Jungle11.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Backgrounds\Tree.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\apemoveleft.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\apemoveright.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\bonfire.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\CharacterAttack.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\characterdeath.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\characteridle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\characteridleflipped.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\characterjump.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\characterjumpflipped.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\charactermove.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\charactermoveflipped.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\CharacterWMallet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\gorillamoveleft.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\gorillamoveright.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\minibossapemoveleft.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\minibossapemoveright.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Data\Character-Animation\portal.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
