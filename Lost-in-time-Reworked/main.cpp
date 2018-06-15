@@ -15,6 +15,7 @@ int main()
 	sf::RenderWindow* window = new sf::RenderWindow();
 	//window->create(sf::VideoMode(config.GetScreenWidth, config.GetScreenHeight), config.GetGameName);
 	window->create(sf::VideoMode(1024, 574), "Lost-in-Time-RW");
+	window->setFramerateLimit(60);
 
 	while (machine.GetRunning())
 		machine.GoNext(*window);
