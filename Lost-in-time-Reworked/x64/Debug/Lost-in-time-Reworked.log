@@ -1,21 +1,2 @@
-﻿  levelOne.cpp
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\player.h(122): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\levelone.cpp(103): warning C4390: ';': empty controlled statement found; is this the intent?
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\levelone.cpp(232): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\levelone.cpp(234): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\levelone.cpp(236): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\levelone.cpp(237): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\levelone.cpp(238): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\levelone.cpp(241): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\levelone.cpp(445): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\levelone.cpp(446): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  physics.cpp
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\player.h(122): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\physics.cpp(253): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\physics.cpp(255): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\physics.cpp(278): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\physics.cpp(279): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\physics.cpp(294): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-d:\dev\lost-in-time-reworked\lost-in-time-reworked\physics.cpp(295): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
+﻿  sprite.cpp
   Lost-in-time-Reworked.vcxproj -> D:\Dev\Lost-in-time-Reworked\x64\Debug\Lost-in-time-Reworked.exe

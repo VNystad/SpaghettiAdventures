@@ -135,40 +135,40 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="animation.cpp" />
+    <ClCompile Include="Source\Framework\animation.cpp" />
     <ClCompile Include="C:\jsoncpp-master\dist\jsoncpp.cpp" />
-    <ClCompile Include="gameObject.cpp" />
-    <ClCompile Include="gameState.cpp" />
-    <ClCompile Include="levelOne.cpp" />
-    <ClCompile Include="machine.cpp" />
-    <ClCompile Include="map.cpp" />
-    <ClCompile Include="object.cpp" />
-    <ClCompile Include="layer.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="physics.cpp" />
-    <ClCompile Include="player.cpp" />
-    <ClCompile Include="spawnpoint.cpp" />
-    <ClCompile Include="sprite.cpp" />
+    <ClCompile Include="Source\States\gameState.cpp" />
+    <ClCompile Include="Source\Levels\levelOne.cpp" />
+    <ClCompile Include="Source\States\machine.cpp" />
+    <ClCompile Include="Source\Map\map.cpp" />
+    <ClCompile Include="Source\Objects\object.cpp" />
+    <ClCompile Include="Source\Map\layer.cpp" />
+    <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\Framework\physics.cpp" />
+    <ClCompile Include="Source\Objects\player.cpp" />
+    <ClCompile Include="Source\Map\spawnpoint.cpp" />
+    <ClCompile Include="Source\Framework\sprite.cpp" />
+    <ClCompile Include="Source\Objects\teleport.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="animation.h" />
+    <ClInclude Include="Source\Framework\animation.h" />
     <ClInclude Include="C:\jsoncpp-master\dist\json\json-forwards.h" />
     <ClInclude Include="C:\jsoncpp-master\dist\json\json.h" />
-    <ClInclude Include="config.h" />
-    <ClInclude Include="gameObject.h" />
-    <ClInclude Include="gameState.h" />
-    <ClInclude Include="level.h" />
-    <ClInclude Include="levelOne.h" />
-    <ClInclude Include="machine.h" />
-    <ClInclude Include="map.h" />
-    <ClInclude Include="object.h" />
-    <ClInclude Include="layer.h" />
-    <ClInclude Include="physics.h" />
-    <ClInclude Include="player.h" />
-    <ClInclude Include="spawnpoint.h" />
-    <ClInclude Include="sprite.h" />
-    <ClInclude Include="state.h" />
-    <ClInclude Include="tile.h" />
+    <ClInclude Include="Source\Framework\config.h" />
+    <ClInclude Include="Source\States\gameState.h" />
+    <ClInclude Include="Source\Levels\level.h" />
+    <ClInclude Include="Source\Levels\levelOne.h" />
+    <ClInclude Include="Source\States\machine.h" />
+    <ClInclude Include="Source\Map\map.h" />
+    <ClInclude Include="Source\Objects\object.h" />
+    <ClInclude Include="Source\Map\layer.h" />
+    <ClInclude Include="Source\Framework\physics.h" />
+    <ClInclude Include="Source\Objects\player.h" />
+    <ClInclude Include="Source\Map\spawnpoint.h" />
+    <ClInclude Include="Source\Framework\sprite.h" />
+    <ClInclude Include="Source\States\state.h" />
+    <ClInclude Include="Source\Objects\teleport.h" />
+    <ClInclude Include="Source\Map\tile.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
