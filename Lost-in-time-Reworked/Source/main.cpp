@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <thread>
-#include "config.h"
-#include "machine.h"
+#include "../Source/Framework/config.h"
+#include "../Source/States/machine.h"
 
 int main()
 {

@@ -1,2 +1,9 @@
-﻿  sprite.cpp
+﻿  physics.cpp
+d:\dev\lost-in-time-reworked\lost-in-time-reworked\source\objects\player.h(122): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
+d:\dev\lost-in-time-reworked\lost-in-time-reworked\source\framework\physics.cpp(269): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\dev\lost-in-time-reworked\lost-in-time-reworked\source\framework\physics.cpp(271): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\dev\lost-in-time-reworked\lost-in-time-reworked\source\framework\physics.cpp(294): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\dev\lost-in-time-reworked\lost-in-time-reworked\source\framework\physics.cpp(295): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\dev\lost-in-time-reworked\lost-in-time-reworked\source\framework\physics.cpp(314): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\dev\lost-in-time-reworked\lost-in-time-reworked\source\framework\physics.cpp(315): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   Lost-in-time-Reworked.vcxproj -> D:\Dev\Lost-in-time-Reworked\x64\Debug\Lost-in-time-Reworked.exe

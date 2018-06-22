@@ -2,12 +2,12 @@
 #include <iostream>
 #include <stdlib.h>
 
-Player::Player(TileSize tileSize, float x, float y, sf::RenderWindow* window) : Object(tileSize), window(window)
+Player::Player(float x, float y, sf::RenderWindow* window) : window(window)
 {
+	this->posX = x;
+	this->posY = y;
 	this->OriginalX = x;
 	this->OriginalY = y;
-	this->positionX = x;
-	this->positionY = y;
 	character = new sf::RectangleShape;
 	character->setSize(sf::Vector2f(sizeWidth, sizeHeight));
 
@@ -28,23 +28,6 @@ Player::~Player()
 {
 }
 
-
-float Player::GetPositionX()
-{
-	return positionX;
-}
-float Player::GetPositionY()
-{
-	return positionY;
-}
-void Player::SetPositionX(float x)
-{
-	this->positionX = x;
-}
-void Player::SetPositionY(float y)
-{
-	this->positionY = y;
-}
 
 float Player::GetOriginalX()
 {
@@ -202,8 +185,8 @@ void Player::PlayerDead()
 	movedirection = 2;
 	movespeedleft = 0;
 	movespeedright = 0;
-	positionX = OriginalX;
-	positionY = OriginalY;
+	this->positionX = OriginalX;
+	this->positionY = OriginalY;
 	//sound->playSound("/Death.wav", 100);
 }
 
@@ -214,7 +197,7 @@ void Player::PlayerDead()
 void Player::DrawMe()
 {
 	// Position the rectangle used to draw the square
-	character->setPosition(positionX, positionY);
+	character->setPosition(posX, posY);
 
 	// Draw the square
 	window->draw(*character);

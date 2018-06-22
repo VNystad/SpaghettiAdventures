@@ -17,9 +17,6 @@
 class LevelOne
 {
 public:
-
-
-
 	LevelOne(sf::RenderWindow& window);
 	~LevelOne();
 
@@ -42,7 +39,6 @@ public:
 protected:
 	bool keyPressed = false;
 	bool playerNamed = false;
-	bool emptySave = false;
 	bool attack = true;
 	bool noAttack = false;
 
@@ -144,7 +140,8 @@ protected:
 
 	Config* config;
 	std::list<Object*> objects;
-	std::list<Teleport*> teleports;
+	//std::list<Teleport*> teleports;
+	std::map<int, Object*> teleports;
 	std::list<SpawnPoint*> spawnpointList;
 	sf::Clock* clock;
 	sf::RenderWindow* window;

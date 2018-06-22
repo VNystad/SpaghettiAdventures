@@ -7,7 +7,7 @@
 #include "../Framework/sprite.h"
 #include "../Objects/teleport.h"
 
-bool Map::Load(std::string filename, std::list<Object*>& details, int** collidableArray, std::list<SpawnPoint*>& spawnpointList, int** interactionArray, std::list<Teleport*>& teleports)
+bool Map::Load(std::string filename, std::list<Object*>& details, int** collidableArray, std::list<SpawnPoint*>& spawnpointList, int** interactionArray, std::map<int, Object*> teleports)
 {
 	// Will contain the data we read in
 	Json::Value root;
@@ -44,15 +44,15 @@ bool Map::Load(std::string filename, std::list<Object*>& details, int** collidab
 			LoadLayer(layer, details, tileSize, collidableArray);
 
 		// All objects that can be interacted with 
-		else if (layer["name"].asString() == "Interaction")
-			LoadInteractionObjects(layer, details, tileSize, teleports);
+		else if (layer["name"].asString() == "InteractionLocations")
+			LoadInteractionObjects(layer, details, tileSize, teleports, interactionArray);
 
 		// all spawnpoints are sent here
 		else if (layer["name"].asString() == "Spawnpoints")
 			LoadSpawnPoints(root, layer, spawnpointList);
 
 		else
-			LoadObjects(root, layer, details, tileSize, teleports);
+			LoadObjects(root, layer, details, tileSize);
 	}
 
 	// Read in tileset (Should be handled by a resource handler)
@@ -62,34 +62,37 @@ bool Map::Load(std::string filename, std::list<Object*>& details, int** collidab
 	// Assign tileset to every object
 	for (Object* detail : details)
 		detail->texture = tileset;
-	for (Teleport* teleport : teleports)
-		teleport->texture = tileset;
 
 	return true;
 }
 
-void Map::LoadInteractionObjects(Json::Value& layer, std::list<Object*>& details, TileSize tileSize, std::list<Teleport*>& teleports)
+void Map::LoadInteractionObjects(Json::Value& layer, std::list<Object*>& details, TileSize tileSize, std::map<int, Object*> teleports, int** interactionArray)
 {
+	// Iterate over all objects under the "Interaction" layer
 	for (Json::Value& object : layer["objects"])
 	{
+		// If object name is teleport
 		if (object["name"].asString() == "Teleport")
 		{
-			Teleport* teleport = new Teleport(tileSize, object["x"].asInt(), object["y"].asInt() - tileSize.y, object["properties"]["Entry"].asBool());
-			teleport->id = object["gid"].asInt();
-			teleport->SetID(object["properties"]["SisterTeleport"].asInt());
+			std::string path = "D:\Dev\Lost-in-time-Reworked\Lost-in-time-Reworked\Data\teleport.png";
+			Teleport* teleport = new Teleport(object["x"].asInt(), object["y"].asInt(), object["properties"]["Entry"].asBool(), path);
+			teleport->SetID(object["id"].asInt());
+			teleport->SetSisterTPID(object["properties"]["SisterTeleport"].asInt());
 			teleport->SetSisterPosX(object["properties"]["SisterTeleportX"].asFloat());
 			teleport->SetSisterPosY(object["properties"]["SisterTeleportY"].asFloat());
-			teleports.push_back(teleport);
+
+			int id = object["id"].asInt();
+
+			teleports.emplace(id, teleport);
+
+			//details.push_back(teleport);
+			
+			// Add to interactionArray to identify collision
+			int x = (object["x"].asInt() + 32)/32;
+			int y = (object["y"].asInt() - 32)/32;
+			interactionArray[y][x] = object["id"].asInt();
 			continue;
 		}
-		Sprite* sprite = new Sprite(tileSize);
-
-		// Load basic object info
-		sprite->x = object["x"].asInt();
-		sprite->y = object["y"].asInt() - sprite->tileSize.y;
-		sprite->id = object["gid"].asInt();
-
-		details.push_back(sprite);
 	}
 }
 
@@ -130,30 +133,8 @@ void Map::LoadLayer(Json::Value& layer, std::list<Object*>& details, TileSize ti
 	details.push_back(tmp);
 }
 
-void Map::LoadObjects(Json::Value& root, Json::Value& layer, std::list<Object*>& details, TileSize tileSize, std::list<Teleport*>& teleports)
+void Map::LoadObjects(Json::Value& root, Json::Value& layer, std::list<Object*>& details, TileSize tileSize)
 {
-	for (Json::Value& object : layer["Interaction"])
-	{
-		if (object["name"].asString() == "Teleport")
-		{
-			Teleport* teleport = new Teleport(tileSize, object["x"].asInt(), object["y"].asInt() - tileSize.y, object["Entry"].asBool());
-			teleport->id = object["gid"].asInt();
-			teleport->SetID(object["SisterTeleport"].asInt());
-			teleport->SetSisterPosX(object["SisterTeleportX"].asFloat());
-			teleport->SetSisterPosY(object["SisterTeleportY"].asFloat());
-			teleports.push_back(teleport);
-			continue;
-		}
-		Sprite* sprite = new Sprite(tileSize);
-
-		// Load basic object info
-		sprite->x = object["x"].asInt();
-		sprite->y = object["y"].asInt() - sprite->tileSize.y;
-		sprite->id = object["gid"].asInt();
-
-		details.push_back(sprite);
-	}
-
 	// Get all objects from layer
 	for (Json::Value& object : layer["objects"])
 	{

@@ -20,7 +20,7 @@ void Sprite::draw(sf::RenderWindow& window)
 
 	// Using vertex arrays or permanent sprites would be faster
 	sf::Sprite sprite(*texture, sf::IntRect(tilex + frame * (tileSize.x + tileSize.s), tiley, tileSize.x, tileSize.y));
-	sprite.setPosition((float)x, (float)y);
+	sprite.setPosition((float)this->posX, (float)this->posY);
 
 	window.draw(sprite);
 }

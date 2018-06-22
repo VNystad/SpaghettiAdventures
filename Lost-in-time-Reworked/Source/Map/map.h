@@ -21,7 +21,7 @@ public:
 	Map() { }
 
 	// Load map from Tiled JSON file
-	static bool Load(std::string filename, std::list<Object*>& details, int** collidableArray, std::list<SpawnPoint*>& spawnpointList, int** interactionArray, std::list<Teleport*>& teleports);
+	static bool Load(std::string filename, std::list<Object*>& details, int** collidableArray, std::list<SpawnPoint*>& spawnpointList, int** interactionArray, std::map<int, Object*> teleports);
 
 private:
 
@@ -29,10 +29,10 @@ private:
 	static void LoadLayer(Json::Value& layer, std::list<Object*>& details, TileSize tileSize, int** collidableArray);
 
 	// Handles interaction object layers
-	static void LoadInteractionObjects(Json::Value& layer, std::list<Object*>& objects, TileSize tileSize, std::list<Teleport*>& teleports);
+	static void LoadInteractionObjects(Json::Value& layer, std::list<Object*>& objects, TileSize tileSize, std::map<int, Object*> teleports, int** interactionArray);
 
 	// Handles object layers
-	static void LoadObjects(Json::Value& root, Json::Value& layer, std::list<Object*>& details, TileSize tileSize, std::list<Teleport*>& teleports);
+	static void LoadObjects(Json::Value& root, Json::Value& layer, std::list<Object*>& details, TileSize tileSize);
 
 	// Handles spawn points
 	static void LoadSpawnPoints(Json::Value& root, Json::Value& layer, std::list<SpawnPoint*>& spawnpoint);

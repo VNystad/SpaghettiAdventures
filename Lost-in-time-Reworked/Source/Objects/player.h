@@ -15,7 +15,7 @@
 class Player : public Object
 {
 public:
-	Player(TileSize tileSize, float x, float y, sf::RenderWindow* window);
+	Player(float x, float y, sf::RenderWindow* window);
 	~Player();
 
 	sf::RectangleShape* character;
@@ -49,10 +49,10 @@ public:
 	void SetPlayerHurt(int playerhurt) { this->playerhurt = playerhurt; };
 	int GetPlayerHurt() const { return playerhurt; }
 
-	float GetPositionX();
-	float GetPositionY();
-	void SetPositionX(float x);
-	void SetPositionY(float y);
+	/*float GetPositionX() { return positionX; }
+	float GetPositionY() { return positionY; }
+	void SetPositionX(float x) { this->positionX = x; }
+	void SetPositionY(float y) { this->positionY = y;*/
 
 	float GetOriginalX();
 	float GetOriginalY();
@@ -189,8 +189,8 @@ protected:
 	float OriginalY;
 
 	//Player position
-	float positionX = OriginalX;
-	float positionY = OriginalY;
+	float positionX;
+	float positionY;
 
 	float counter = 0; // Counter for animation
 	int lastmovedirection = 2;

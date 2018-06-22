@@ -110,7 +110,7 @@ LevelOne::LevelOne(sf::RenderWindow& window)
 		tileSize.s = 0;
 		std::string temp = (*it)->GetObject();
 		if (temp.compare("Player"));
-			player = new Player(tileSize, (*it)->GetX(), (*it)->GetY(), &window);
+			player = new Player((*it)->GetX(), (*it)->GetY(), &window);
 		/*
 		else if (!temp.compare("princess"))
 			princess = new PrincessObject(4862, 550, 50, &window);
@@ -319,7 +319,7 @@ bool LevelOne::Tick(Machine& machine)
 
 	// For testing only, prints out player position
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-		std::cout << player->GetPositionX() << " " << player->GetPositionY() << std::endl;
+		std::cout << player->GetPosX() << " " << player->GetPosY() << std::endl;
 
 	// When player presses G, player character is damaged. For testing purposes
 	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::G) && player->health.GetActualLifePoints() > 0)
@@ -360,8 +360,6 @@ bool LevelOne::Tick(Machine& machine)
 		timer->restart();
 	}*/
 
-	// Player player animation
-	player->PlayerAnimation(delta, noAttack);
 
 
 	/***************************
@@ -378,6 +376,9 @@ bool LevelOne::Tick(Machine& machine)
 
 	RenderMap(delta);
 
+	// Player player animation
+	player->PlayerAnimation(delta, noAttack);
+
 	PositionCamera();
 
 	
@@ -391,15 +392,14 @@ bool LevelOne::Tick(Machine& machine)
 
 void LevelOne::AttemptTeleport(Player* player)
 {
-	for (Teleport *tp : teleports)
+	/*for (Teleport *tp : teleports)
 	{
 		float x = tp->GetPosX();
 		float y = tp->GetPosY();
 		
-		//if (player->GetPositionX() / 32 == tp->GetPosX() / 32 && (player->GetPositionY() / 32) + 1 == tp->GetPosY() / 32)
-		if ((int)player->GetPositionX() / 32 == (int)tp->GetPosX() / 32)
-			tp->collisionAction(*player);
-	}
+		if ((int)player->GetPosX() / 32 == (int)tp->GetPosX() / 32 && (int)player->GetPosY() / 32 == (int)tp->GetPosY() / 32)
+			tp->collisionAction(player);
+	}*/
 }
 
 void LevelOne::RenderMap(float delta)
@@ -426,11 +426,16 @@ void LevelOne::RenderMap(float delta)
 		object->draw(*window);
 	}
 
-	for (Teleport *tp : teleports)
+	// Render teleports
+	for (std::map<int, Object*>::iterator it = teleports.begin(); it != teleports.end(); ++it)
+		it->second->draw(*window);
+	/*for (Teleport *tp : teleports)
 	{
 		tp->process(delta);
+		float x = tp->GetPosX();
+		float y = tp->GetPosY();
 		tp->draw(*window);
-	}
+	}*/
 
 	// Draw player
 	player->DrawMe();
@@ -466,8 +471,8 @@ void LevelOne::RenderMap(float delta)
 void LevelOne::PositionCamera()
 {
 	
-	float playerX = player->GetPositionX();
-	float playerY = player->GetPositionY();
+	float playerX = player->GetPosX();
+	float playerY = player->GetPosY();
 
 	sf::View tempView = window->getDefaultView();
 	window->setView(tempView);
@@ -536,7 +541,7 @@ void LevelOne::PositionCamera()
 ****************************************************/
 void LevelOne::Move(float delta)
 {
-	Physics::Movement(player, collidableArray, delta);
+	Physics::Movement(player, collidableArray, interactionArray, &teleports, delta);
 	Physics::Gravity(player, collidableArray, delta);
 	/*if (player->health.GetActualLifePoints() > player->health.GetOriginalLifePoints())
 	{

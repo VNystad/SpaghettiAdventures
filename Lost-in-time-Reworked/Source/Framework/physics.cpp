@@ -1,5 +1,6 @@
 #include <map>
 #include "physics.h"
+#include "../Objects/teleport.h"
 #include <list>
 
 
@@ -12,7 +13,7 @@
 * @param collidableArray An array of collidable tiles to be used in collision detection.
 * @param delta tick time.
 */
-void Physics::Movement(Player* p, int** collidableArray, float delta) 
+void Physics::Movement(Player* p, int** collidableArray, int** interactionArray, std::map<int, Object*>* interactionObjects, float delta) 
 {
 	//Checks if player got hit by enemy
 	/*if (p->GetPlayerHurt() != 5)
@@ -92,7 +93,7 @@ void Physics::Movement(Player* p, int** collidableArray, float delta)
 
 		//The object is actually being moved
 		if (!HorisontalCollision(p, collidableArray))
-			p->SetPositionX(p->GetPositionX() - p->GetMoveSpeedL() * delta);
+			p->SetPosX(p->GetPosX() - p->GetMoveSpeedL() * delta);
 		else
 			p->SetMoveSpeedL(0);
 	}
@@ -129,9 +130,22 @@ void Physics::Movement(Player* p, int** collidableArray, float delta)
 
 		//The object is actually being moved
 		if (!HorisontalCollision(p, collidableArray))
-			p->SetPositionX(p->GetPositionX() + p->GetMoveSpeedR() * delta);
+			p->SetPosX(p->GetPosX() + p->GetMoveSpeedR() * delta);
 		else
 			p->SetMoveSpeedR(0);
+	}
+
+	// Check if player collides with any interaction objects
+	int x = (int)((p->GetPosX() + p->GetSizeWidth() / 2) / 32);
+	int y = (int)((p->GetPosY() + p->GetSizeHeight()) / 32);
+	int id = interactionArray[y][x];
+	if (id > 0)
+	{
+		//Object* tp = (Object*)interactionObjects->find(id)->second;
+		std::map<int, Object*>::iterator it = interactionObjects->find(id);
+		Object* tp = it->second;
+		//tp->second->collisionAction(p);
+		tp->collisionAction(p);
 	}
 }
 
@@ -207,7 +221,7 @@ void Physics::Gravity(Player* p, int** collidableArray, float delta)
 				}
 
 				else
-					p->SetPositionY(p->GetPositionY() - 1);
+					p->SetPosY(p->GetPosY() - 1);
 			}
 		}
 		//The Object is descending (apexcheck) as well ass airborne (jumpcheck),
@@ -228,7 +242,7 @@ void Physics::Gravity(Player* p, int** collidableArray, float delta)
 				}
 
 				else
-					p->SetPositionY(p->GetPositionY() + 1);
+					p->SetPosY(p->GetPosY() + 1);
 			}
 
 			//Fallspeed cannot exceed the max fallspeed, the real life equivalent of wind resistance limiting
@@ -252,9 +266,9 @@ void Physics::Gravity(Player* p, int** collidableArray, float delta)
 */
 bool Physics::HorisontalCollision(Player* p, int** collidableArray)
 {
-	int upperPlayerYArrayCoord = (p->GetPositionY() / 32) >0 ? (p->GetPositionY() + 17) / 32 : 0; //Experimental bug fix
+	int upperPlayerYArrayCoord = (p->GetPosY() / 32) >0 ? (p->GetPosY() + 17) / 32 : 0; //Experimental bug fix
 	int lowerPlayerArrayCoord = upperPlayerYArrayCoord + 1;
-	int playerWestCoord = (p->GetPositionX() / 32);
+	int playerWestCoord = (p->GetPosX() / 32);
 	int playerEastCoord = playerWestCoord + 1;
 
 	return (p->GetMoveSpeedL() > 0 && (collidableArray[upperPlayerYArrayCoord][playerWestCoord] || collidableArray[lowerPlayerArrayCoord][playerWestCoord]))
@@ -277,8 +291,8 @@ bool Physics::HorisontalCollision(Player* p, int** collidableArray)
 */
 bool Physics::Grounded(Player* p, int** collidableArray)
 {
-	int playerArrayCoordX = (p->GetPositionX() + 17) / 32;
-	int playerSouthCoord = ((p->GetPositionY() + p->GetSizeHeight() / 2) / 32)>0 ? (p->GetPositionY() + 50) / 32 : 0;
+	int playerArrayCoordX = (p->GetPosX() + 17) / 32;
+	int playerSouthCoord = ((p->GetPosY() + p->GetSizeHeight() / 2) / 32)>0 ? (p->GetPosY() + 50) / 32 : 0;
 	//if (collidableArray[playerSouthCoord][playerArrayCoordX] == 142 || collidableArray[playerSouthCoord - 1][playerArrayCoordX] == 142) //Hit lava
 		//p->health.Hit(1);
 
@@ -297,8 +311,8 @@ bool Physics::Grounded(Player* p, int** collidableArray)
 */
 bool Physics::Roofed(Player* p, int** collidableArray)
 {
-	int playerArrayCoordX = (p->GetPositionX() + 17) / 32;
-	int playerNorthCoord = (p->GetPositionY() / 32)>0 ? (p->GetPositionY() + 30) / 32 - 1 : 0;
+	int playerArrayCoordX = (p->GetPosX() + 17) / 32;
+	int playerNorthCoord = (p->GetPosY() / 32)>0 ? (p->GetPosY() + 30) / 32 - 1 : 0;
 
 	if (collidableArray[playerNorthCoord][playerArrayCoordX] != 0)
 	{

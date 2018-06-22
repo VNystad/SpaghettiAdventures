@@ -9,7 +9,7 @@
 class Physics
 {
 public:
-	static void Movement(Player* p, int** collidableArray, float delta);
+	static void Movement(Player* p, int** collidableArray, int** interactionArray, std::map<int, Object*>* interactionObjects, float delta);
 	static void Gravity(Player* p, int** collidableArray, float delta);
 
 	static bool HorisontalCollision(Player* p, int** collidableArray);
